@@ -157,7 +157,7 @@ const save=()=>localStorage.setItem('pg5',JSON.stringify(done));
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function goHub(){if(activeGame?.stop)activeGame.stop();activeGame=null;show('hub');updateHub()}
 function startGame(i){if(done[i])return;show(['s-2048','s-tetris','s-breaker','s-memory','s-merge'][i]);activeGame=[()=>new Game2048(),()=>new Tetris(),()=>new Breaker(),()=>new Memory(),()=>new MergeGame()][i]()}
-function gameWin(i){if(activeGame?.stop)activeGame.stop();activeGame=null;done[i]=1;save();document.getElementById('wtitle').textContent='🎉 클리어!';document.getElementById('whint').textContent='Hint: '+HINTS[i];document.getElementById('wprog').textContent='선물 완성도 '+done.filter(x=>x).length+'/5';document.getElementById('win-overlay').classList.add('active')}
+function gameWin(i){if(activeGame?.stop)activeGame.stop();activeGame=null;done[i]=1;save();document.getElementById('wtitle').textContent='🎉 클리어!';document.getElementById('whint').textContent='Hint: '+HINTS[i];document.getElementById('wprog').textContent='힌트 완성도 '+done.filter(x=>x).length+'/5';document.getElementById('win-overlay').classList.add('active')}
 function closeWin(){document.getElementById('win-overlay').classList.remove('active');goHub()}
 function updateHub(){
   done.forEach((d,i)=>{const ps=document.getElementById('ps'+i);if(d){document.getElementById('pin'+i).classList.add('done');ps.textContent='✓';ps.style.background='rgba(76,175,80,.8)';ps.style.color='#fff'}});
